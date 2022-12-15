@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.gbDatos = new System.Windows.Forms.GroupBox();
-            this.gbListado = new System.Windows.Forms.GroupBox();
-            this.txtHistoriaClinica = new System.Windows.Forms.TextBox();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.lblHistClinica = new System.Windows.Forms.Label();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.lblObraSocial = new System.Windows.Forms.Label();
-            this.lblSexo = new System.Windows.Forms.Label();
-            this.lblFechaNac = new System.Windows.Forms.Label();
-            this.cbObraSocial = new System.Windows.Forms.ComboBox();
-            this.rbFemenino = new System.Windows.Forms.RadioButton();
-            this.rbMasculino = new System.Windows.Forms.RadioButton();
-            this.ckbObraSocial = new System.Windows.Forms.CheckBox();
-            this.lbPacientes = new System.Windows.Forms.ListBox();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
+            this.ckbObraSocial = new System.Windows.Forms.CheckBox();
+            this.rbMasculino = new System.Windows.Forms.RadioButton();
+            this.rbFemenino = new System.Windows.Forms.RadioButton();
+            this.cbObraSocial = new System.Windows.Forms.ComboBox();
+            this.lblFechaNac = new System.Windows.Forms.Label();
+            this.lblSexo = new System.Windows.Forms.Label();
+            this.lblObraSocial = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblHistClinica = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtHistoriaClinica = new System.Windows.Forms.TextBox();
+            this.gbListado = new System.Windows.Forms.GroupBox();
+            this.lbPacientes = new System.Windows.Forms.ListBox();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -71,93 +71,22 @@
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Datos del Paciente";
             // 
-            // gbListado
+            // dtpFechaNac
             // 
-            this.gbListado.Controls.Add(this.lbPacientes);
-            this.gbListado.Location = new System.Drawing.Point(418, 12);
-            this.gbListado.Name = "gbListado";
-            this.gbListado.Size = new System.Drawing.Size(400, 287);
-            this.gbListado.TabIndex = 1;
-            this.gbListado.TabStop = false;
-            this.gbListado.Text = "Listado de Pacientes";
+            this.dtpFechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaNac.Location = new System.Drawing.Point(120, 212);
+            this.dtpFechaNac.Name = "dtpFechaNac";
+            this.dtpFechaNac.Size = new System.Drawing.Size(110, 23);
+            this.dtpFechaNac.TabIndex = 11;
             // 
-            // txtHistoriaClinica
+            // ckbObraSocial
             // 
-            this.txtHistoriaClinica.Location = new System.Drawing.Point(120, 53);
-            this.txtHistoriaClinica.Name = "txtHistoriaClinica";
-            this.txtHistoriaClinica.Size = new System.Drawing.Size(82, 23);
-            this.txtHistoriaClinica.TabIndex = 0;
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(120, 95);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(262, 23);
-            this.txtNombre.TabIndex = 1;
-            // 
-            // lblHistClinica
-            // 
-            this.lblHistClinica.AutoSize = true;
-            this.lblHistClinica.Location = new System.Drawing.Point(10, 56);
-            this.lblHistClinica.Name = "lblHistClinica";
-            this.lblHistClinica.Size = new System.Drawing.Size(104, 15);
-            this.lblHistClinica.TabIndex = 2;
-            this.lblHistClinica.Text = "Historia Clinica N°";
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(63, 98);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(51, 15);
-            this.lblNombre.TabIndex = 3;
-            this.lblNombre.Text = "Nombre";
-            // 
-            // lblObraSocial
-            // 
-            this.lblObraSocial.AutoSize = true;
-            this.lblObraSocial.Location = new System.Drawing.Point(47, 138);
-            this.lblObraSocial.Name = "lblObraSocial";
-            this.lblObraSocial.Size = new System.Drawing.Size(67, 15);
-            this.lblObraSocial.TabIndex = 4;
-            this.lblObraSocial.Text = "Obra Social";
-            // 
-            // lblSexo
-            // 
-            this.lblSexo.AutoSize = true;
-            this.lblSexo.Location = new System.Drawing.Point(82, 179);
-            this.lblSexo.Name = "lblSexo";
-            this.lblSexo.Size = new System.Drawing.Size(32, 15);
-            this.lblSexo.TabIndex = 5;
-            this.lblSexo.Text = "Sexo";
-            // 
-            // lblFechaNac
-            // 
-            this.lblFechaNac.AutoSize = true;
-            this.lblFechaNac.Location = new System.Drawing.Point(11, 218);
-            this.lblFechaNac.Name = "lblFechaNac";
-            this.lblFechaNac.Size = new System.Drawing.Size(103, 15);
-            this.lblFechaNac.TabIndex = 6;
-            this.lblFechaNac.Text = "Fecha Nacimiento";
-            // 
-            // cbObraSocial
-            // 
-            this.cbObraSocial.FormattingEnabled = true;
-            this.cbObraSocial.Location = new System.Drawing.Point(159, 135);
-            this.cbObraSocial.Name = "cbObraSocial";
-            this.cbObraSocial.Size = new System.Drawing.Size(223, 23);
-            this.cbObraSocial.TabIndex = 7;
-            // 
-            // rbFemenino
-            // 
-            this.rbFemenino.AutoSize = true;
-            this.rbFemenino.Location = new System.Drawing.Point(120, 179);
-            this.rbFemenino.Name = "rbFemenino";
-            this.rbFemenino.Size = new System.Drawing.Size(92, 19);
-            this.rbFemenino.TabIndex = 8;
-            this.rbFemenino.TabStop = true;
-            this.rbFemenino.Text = "1- Femenino";
-            this.rbFemenino.UseVisualStyleBackColor = true;
+            this.ckbObraSocial.AutoSize = true;
+            this.ckbObraSocial.Location = new System.Drawing.Point(120, 139);
+            this.ckbObraSocial.Name = "ckbObraSocial";
+            this.ckbObraSocial.Size = new System.Drawing.Size(15, 14);
+            this.ckbObraSocial.TabIndex = 10;
+            this.ckbObraSocial.UseVisualStyleBackColor = true;
             // 
             // rbMasculino
             // 
@@ -170,14 +99,93 @@
             this.rbMasculino.Text = "2- Masculino";
             this.rbMasculino.UseVisualStyleBackColor = true;
             // 
-            // ckbObraSocial
+            // rbFemenino
             // 
-            this.ckbObraSocial.AutoSize = true;
-            this.ckbObraSocial.Location = new System.Drawing.Point(120, 139);
-            this.ckbObraSocial.Name = "ckbObraSocial";
-            this.ckbObraSocial.Size = new System.Drawing.Size(15, 14);
-            this.ckbObraSocial.TabIndex = 10;
-            this.ckbObraSocial.UseVisualStyleBackColor = true;
+            this.rbFemenino.AutoSize = true;
+            this.rbFemenino.Location = new System.Drawing.Point(120, 179);
+            this.rbFemenino.Name = "rbFemenino";
+            this.rbFemenino.Size = new System.Drawing.Size(92, 19);
+            this.rbFemenino.TabIndex = 8;
+            this.rbFemenino.TabStop = true;
+            this.rbFemenino.Text = "1- Femenino";
+            this.rbFemenino.UseVisualStyleBackColor = true;
+            // 
+            // cbObraSocial
+            // 
+            this.cbObraSocial.FormattingEnabled = true;
+            this.cbObraSocial.Location = new System.Drawing.Point(159, 135);
+            this.cbObraSocial.Name = "cbObraSocial";
+            this.cbObraSocial.Size = new System.Drawing.Size(223, 23);
+            this.cbObraSocial.TabIndex = 7;
+            // 
+            // lblFechaNac
+            // 
+            this.lblFechaNac.AutoSize = true;
+            this.lblFechaNac.Location = new System.Drawing.Point(11, 218);
+            this.lblFechaNac.Name = "lblFechaNac";
+            this.lblFechaNac.Size = new System.Drawing.Size(103, 15);
+            this.lblFechaNac.TabIndex = 6;
+            this.lblFechaNac.Text = "Fecha Nacimiento";
+            // 
+            // lblSexo
+            // 
+            this.lblSexo.AutoSize = true;
+            this.lblSexo.Location = new System.Drawing.Point(82, 179);
+            this.lblSexo.Name = "lblSexo";
+            this.lblSexo.Size = new System.Drawing.Size(32, 15);
+            this.lblSexo.TabIndex = 5;
+            this.lblSexo.Text = "Sexo";
+            // 
+            // lblObraSocial
+            // 
+            this.lblObraSocial.AutoSize = true;
+            this.lblObraSocial.Location = new System.Drawing.Point(47, 138);
+            this.lblObraSocial.Name = "lblObraSocial";
+            this.lblObraSocial.Size = new System.Drawing.Size(67, 15);
+            this.lblObraSocial.TabIndex = 4;
+            this.lblObraSocial.Text = "Obra Social";
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(63, 98);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(51, 15);
+            this.lblNombre.TabIndex = 3;
+            this.lblNombre.Text = "Nombre";
+            // 
+            // lblHistClinica
+            // 
+            this.lblHistClinica.AutoSize = true;
+            this.lblHistClinica.Location = new System.Drawing.Point(10, 56);
+            this.lblHistClinica.Name = "lblHistClinica";
+            this.lblHistClinica.Size = new System.Drawing.Size(104, 15);
+            this.lblHistClinica.TabIndex = 2;
+            this.lblHistClinica.Text = "Historia Clinica N°";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(120, 95);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(262, 23);
+            this.txtNombre.TabIndex = 1;
+            // 
+            // txtHistoriaClinica
+            // 
+            this.txtHistoriaClinica.Location = new System.Drawing.Point(120, 53);
+            this.txtHistoriaClinica.Name = "txtHistoriaClinica";
+            this.txtHistoriaClinica.Size = new System.Drawing.Size(82, 23);
+            this.txtHistoriaClinica.TabIndex = 0;
+            // 
+            // gbListado
+            // 
+            this.gbListado.Controls.Add(this.lbPacientes);
+            this.gbListado.Location = new System.Drawing.Point(418, 12);
+            this.gbListado.Name = "gbListado";
+            this.gbListado.Size = new System.Drawing.Size(400, 287);
+            this.gbListado.TabIndex = 1;
+            this.gbListado.TabStop = false;
+            this.gbListado.Text = "Listado de Pacientes";
             // 
             // lbPacientes
             // 
@@ -188,14 +196,6 @@
             this.lbPacientes.Size = new System.Drawing.Size(385, 259);
             this.lbPacientes.TabIndex = 0;
             // 
-            // dtpFechaNac
-            // 
-            this.dtpFechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaNac.Location = new System.Drawing.Point(120, 212);
-            this.dtpFechaNac.Name = "dtpFechaNac";
-            this.dtpFechaNac.Size = new System.Drawing.Size(110, 23);
-            this.dtpFechaNac.TabIndex = 11;
-            // 
             // btnNuevo
             // 
             this.btnNuevo.Location = new System.Drawing.Point(12, 322);
@@ -204,6 +204,7 @@
             this.btnNuevo.TabIndex = 2;
             this.btnNuevo.Text = "Nuevo Paciente";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnGrabar
             // 
