@@ -14,6 +14,10 @@ namespace ExamenFinal
            gbDatos.Enabled = false;
            
         }
+        
+        //----------------------------------------------------------------------------------
+       
+        #region METODOS AUXILIARES
 
         public void CargarHC()
         {
@@ -21,15 +25,43 @@ namespace ExamenFinal
             txtHistoriaClinica.Text = oHelper.ProximoPaciente().ToString();
         }
 
+        public void Limpiar()
+        {
+            txtNombre.Text = String.Empty;
+            ckbObraSocial.Checked = false;
+            cbObraSocial.SelectedIndex = -1;
+            rbFemenino.Checked = false;
+            rbMasculino.Checked = false;
+            dtpFechaNac.Value = DateTime.Today;
+        }
         public void GuardarPaciente()
         {
 
         }
 
+        #endregion
+
+        //----------------------------------------------------------------------------------
+
+        #region CONFIGURACION DE BOTONES
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             gbDatos.Enabled=true;
             CargarHC();
+            Limpiar();
         }
+
+        private void btnGrabar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        //----------------------------------------------------------------------------------
     }
 }

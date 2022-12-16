@@ -48,11 +48,25 @@ namespace ExamenFinal
             return tabla;
         }
 
-        public int EjecutarUpdate(string cod, string nom, string esp, string pre, string fec)
+        public int EjecutarUpdate(string cod, string nom, string oSoc, string sexo, string fec)
         {
             int filas;
 
-            string query = $"update Plantas set nombre='{nom}',especie={esp},precio={pre},fecha='{fec}' where codigo={cod}";
+            string query = $"update Pacientes set nombre='{nom}',obraSocial={oSoc},sexo={sexo},fechaNacimiento='{fec}' where codigo={cod}";
+
+            cnn.Open();
+            SqlCommand cmd = new(query, cnn);
+            filas = cmd.ExecuteNonQuery();
+            cnn.Close();
+
+            return filas;
+        }
+
+        public int EjecutarInsert(string nom, string oSoc, string sexo, string fec)
+        {
+            int filas;
+
+            string query = $"insert into Pacientes (nombre,obraSocial,sexo,fechaNacimiento)values('{nom}',{oSoc},{sexo},'{fec}')";
 
             cnn.Open();
             SqlCommand cmd = new(query, cnn);
