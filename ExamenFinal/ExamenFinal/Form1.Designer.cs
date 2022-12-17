@@ -64,9 +64,9 @@
             this.gbDatos.Controls.Add(this.lblHistClinica);
             this.gbDatos.Controls.Add(this.txtNombre);
             this.gbDatos.Controls.Add(this.txtHistoriaClinica);
-            this.gbDatos.Location = new System.Drawing.Point(12, 12);
+            this.gbDatos.Location = new System.Drawing.Point(8, 8);
             this.gbDatos.Name = "gbDatos";
-            this.gbDatos.Size = new System.Drawing.Size(400, 287);
+            this.gbDatos.Size = new System.Drawing.Size(400, 288);
             this.gbDatos.TabIndex = 0;
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Datos del Paciente";
@@ -78,6 +78,7 @@
             this.dtpFechaNac.Name = "dtpFechaNac";
             this.dtpFechaNac.Size = new System.Drawing.Size(110, 23);
             this.dtpFechaNac.TabIndex = 11;
+            this.dtpFechaNac.ValueChanged += new System.EventHandler(this.dtpFechaNac_ValueChanged);
             // 
             // ckbObraSocial
             // 
@@ -87,6 +88,7 @@
             this.ckbObraSocial.Size = new System.Drawing.Size(15, 14);
             this.ckbObraSocial.TabIndex = 5;
             this.ckbObraSocial.UseVisualStyleBackColor = true;
+            this.ckbObraSocial.CheckedChanged += new System.EventHandler(this.ckbObraSocial_CheckedChanged);
             // 
             // rbMasculino
             // 
@@ -112,6 +114,7 @@
             // 
             // cbObraSocial
             // 
+            this.cbObraSocial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbObraSocial.FormattingEnabled = true;
             this.cbObraSocial.Location = new System.Drawing.Point(159, 135);
             this.cbObraSocial.Name = "cbObraSocial";
@@ -169,20 +172,21 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(262, 23);
             this.txtNombre.TabIndex = 3;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // txtHistoriaClinica
             // 
-            this.txtHistoriaClinica.Location = new System.Drawing.Point(120, 53);
+            this.txtHistoriaClinica.Location = new System.Drawing.Point(120, 48);
             this.txtHistoriaClinica.Name = "txtHistoriaClinica";
-            this.txtHistoriaClinica.Size = new System.Drawing.Size(82, 23);
+            this.txtHistoriaClinica.Size = new System.Drawing.Size(80, 23);
             this.txtHistoriaClinica.TabIndex = 1;
             // 
             // gbListado
             // 
             this.gbListado.Controls.Add(this.lbPacientes);
-            this.gbListado.Location = new System.Drawing.Point(418, 12);
+            this.gbListado.Location = new System.Drawing.Point(416, 8);
             this.gbListado.Name = "gbListado";
-            this.gbListado.Size = new System.Drawing.Size(400, 287);
+            this.gbListado.Size = new System.Drawing.Size(400, 288);
             this.gbListado.TabIndex = 1;
             this.gbListado.TabStop = false;
             this.gbListado.Text = "Listado de Pacientes";
@@ -193,7 +197,7 @@
             this.lbPacientes.ItemHeight = 15;
             this.lbPacientes.Location = new System.Drawing.Point(6, 22);
             this.lbPacientes.Name = "lbPacientes";
-            this.lbPacientes.Size = new System.Drawing.Size(385, 259);
+            this.lbPacientes.Size = new System.Drawing.Size(384, 259);
             this.lbPacientes.TabIndex = 0;
             // 
             // btnNuevo
@@ -237,6 +241,7 @@
             this.Controls.Add(this.gbListado);
             this.Controls.Add(this.gbDatos);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pacientes";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbDatos.ResumeLayout(false);

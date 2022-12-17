@@ -62,6 +62,25 @@ namespace ExamenFinal
             return filas;
         }
 
+        public int EjecutarInsert(Paciente p)
+        {
+            int filas;
+
+            string nom = p.pNombre;
+            string oSoc = p.pObraSocial.ToString();
+            string sexo = p.pSexo.ToString();
+            string fec = p.pFechaNac.ToString();
+
+            string query = $"insert into Pacientes (nombre,obraSocial,sexo,fechaNacimiento)values('{nom}',{oSoc},{sexo},'{fec}')";
+
+            cnn.Open();
+            SqlCommand cmd = new(query, cnn);
+            filas = cmd.ExecuteNonQuery();
+            cnn.Close();
+
+            return filas;
+        }
+        /*
         public int EjecutarInsert(string nom, string oSoc, string sexo, string fec)
         {
             int filas;
@@ -74,6 +93,6 @@ namespace ExamenFinal
             cnn.Close();
 
             return filas;
-        }
+        }*/
     }
 }
