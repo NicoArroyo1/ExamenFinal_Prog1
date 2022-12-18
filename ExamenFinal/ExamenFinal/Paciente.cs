@@ -8,43 +8,66 @@ namespace ExamenFinal
 {
     public class Paciente
     {
-		private int NumeroHC;
-		private string Nombre;
-		private int ObraSocial;
-		private int Sexo;
-		private DateTime FechaNac;
+        #region ATRIBUTOS
+        private int numeroHC;
+		private string nombre;
+		private int obraSocial;
+		private int sexo;
+		private DateTime fechaNac;
+        #endregion
 
-		public int pNumeroHC
+        #region PROPIEDADES
+        public int pNumeroHC
 		{
-			get { return NumeroHC; }
-			set { NumeroHC = value; }
+			get { return numeroHC; }
+			set { numeroHC = value; }
 		}
         public string pNombre
         {
-            get { return Nombre; }
-            set { Nombre = value; }
+            get { return nombre; }
+            set { nombre = value; }
         }
         public int pObraSocial
         {
-            get { return ObraSocial; }
-            set { ObraSocial = value; }
+            get { return obraSocial; }
+            set { obraSocial = value; }
         }
         public int pSexo
         {
-            get { return Sexo; }
-            set { Sexo = value; }
+            get { return sexo; }
+            set { sexo = value; }
         }
         public DateTime pFechaNac
         {
-            get { return FechaNac; }
-            set { FechaNac = value; }
+            get { return fechaNac; }
+            set { fechaNac = value; }
         }
+        #endregion
 
+        #region CONSTRUCTORES
+        public Paciente()
+        {
+            pNumeroHC = 0;
+            pNombre = "";
+            pObraSocial = 0;
+            pSexo = 0;
+            pFechaNac = DateTime.Today;
+        }
+        public Paciente(int hc, string nom, int obrasocial, int sexo, DateTime fechanac)
+        {
+            pNumeroHC = hc;
+            pNombre = nom;
+            pObraSocial = obrasocial;
+            pSexo = sexo;
+            pFechaNac = fechanac;
+        }
+        #endregion
+
+        #region METODOS
         public override string ToString()
         {
-            return ""; 
+            return numeroHC + "  -  " + nombre + "  -  " + fechaNac.ToShortDateString();
         }
-
-
+        #endregion
     }
 }

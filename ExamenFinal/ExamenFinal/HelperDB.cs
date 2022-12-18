@@ -48,11 +48,18 @@ namespace ExamenFinal
             return tabla;
         }
 
-        public int EjecutarUpdate(string cod, string nom, string oSoc, string sexo, string fec)
+        public int EjecutarUpdate(Paciente p)
         {
             int filas;
 
-            string query = $"update Pacientes set nombre='{nom}',obraSocial={oSoc},sexo={sexo},fechaNacimiento='{fec}' where codigo={cod}";
+            string cod = p.pNumeroHC.ToString();
+            string nom = p.pNombre;
+            string oSoc = p.pObraSocial.ToString();
+            string sexo = p.pSexo.ToString();
+            string fec = p.pFechaNac.ToString();
+
+            string query = $"update Pacientes set nombre='{nom}',obraSocial={oSoc},sexo={sexo},fechaNacimiento='{fec}' " +
+                           $"where numeroHC={cod}";
 
             cnn.Open();
             SqlCommand cmd = new(query, cnn);
@@ -71,7 +78,8 @@ namespace ExamenFinal
             string sexo = p.pSexo.ToString();
             string fec = p.pFechaNac.ToString();
 
-            string query = $"insert into Pacientes (nombre,obraSocial,sexo,fechaNacimiento)values('{nom}',{oSoc},{sexo},'{fec}')";
+            string query = $"insert into Pacientes(nombre,obraSocial,sexo,fechaNacimiento) " +
+                           $"values('{nom}',{oSoc},{sexo},'{fec}')";
 
             cnn.Open();
             SqlCommand cmd = new(query, cnn);
@@ -80,19 +88,5 @@ namespace ExamenFinal
 
             return filas;
         }
-        /*
-        public int EjecutarInsert(string nom, string oSoc, string sexo, string fec)
-        {
-            int filas;
-
-            string query = $"insert into Pacientes (nombre,obraSocial,sexo,fechaNacimiento)values('{nom}',{oSoc},{sexo},'{fec}')";
-
-            cnn.Open();
-            SqlCommand cmd = new(query, cnn);
-            filas = cmd.ExecuteNonQuery();
-            cnn.Close();
-
-            return filas;
-        }*/
     }
 }

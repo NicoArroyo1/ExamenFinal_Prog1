@@ -1,8 +1,13 @@
+using System.ComponentModel;
+using System.Data;
+using System.Numerics;
+
 namespace ExamenFinal
 {
     public partial class Form1 : Form
     {
         private HelperDB? oHelper;
+        private Accion accion;
 
         public Form1()
         {
@@ -12,14 +17,23 @@ namespace ExamenFinal
         private void Form1_Load(object sender, EventArgs e)
         {
            gbDatos.Enabled = false;
+           ActualizarLista();
            Limpiar();
            CargarCombo();
            txtHistoriaClinica.ReadOnly = true;
+           btnEditar.Enabled = false;
+           btnGrabar.Enabled = false;
         }
         
         //----------------------------------------------------------------------------------
        
         #region METODOS AUXILIARES
+
+        enum Accion
+        {
+            NUEVO,
+            EDITAR
+        }
 
         public void CargarHC()
         {
@@ -33,8 +47,29 @@ namespace ExamenFinal
             cbObraSocial.DataSource = oHelper.EjecutarSelect("ObrasSociales");
             cbObraSocial.ValueMember = "idObraSocial";
             cbObraSocial.DisplayMember = "nombreObraSocial";
-            cbObraSocial.SelectedIndex = -1;
+            cbObraSocial.Text = "Particular";
             cbObraSocial.Enabled = false;
+        }
+
+        public void ActualizarLista()
+        {
+            oHelper = new HelperDB();
+            lstPacientes.Items.Clear();
+            DataTable tabla = oHelper.EjecutarSelect("Pacientes");
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                Paciente p = new Paciente
+                {
+                    pNumeroHC = int.Parse(fila["numeroHC"].ToString()),
+                    pNombre = fila["nombre"].ToString(),
+                    pObraSocial = int.Parse(fila["obraSocial"].ToString()),
+                    pSexo = int.Parse(fila["sexo"].ToString()),
+                    pFechaNac = (DateTime)fila["fechaNacimiento"]
+                };
+
+                lstPacientes.Items.Add(p);
+            }
         }
 
         public void Limpiar()
@@ -42,9 +77,10 @@ namespace ExamenFinal
             txtNombre.Text = String.Empty;
             ckbObraSocial.Checked = false;
             cbObraSocial.SelectedIndex = -1;
+            cbObraSocial.Text = "Particular";
             rbFemenino.Checked = false;
             rbMasculino.Checked = false;
-            dtpFechaNac.Value = DateTime.Today;
+            dtpFechaNac.Value = dtpFechaNac.MinDate;
         }
 
         public Paciente ObtenerPaciente()
@@ -55,6 +91,10 @@ namespace ExamenFinal
             if(ckbObraSocial.Checked is true)
             {
                 paciente.pObraSocial = (int)cbObraSocial.SelectedValue;
+            }
+            else
+            {
+                paciente.pObraSocial = 0;
             }
             if(rbFemenino.Checked is true)
             {
@@ -95,7 +135,14 @@ namespace ExamenFinal
             if (Validar())
             {
                 oHelper = new HelperDB();
-                res = oHelper.EjecutarInsert(ObtenerPaciente());
+                if (accion is Accion.NUEVO)
+                {
+                    res = oHelper.EjecutarInsert(ObtenerPaciente());
+                }
+                else if(accion is Accion.EDITAR)
+                {
+                    res = oHelper.EjecutarUpdate(ObtenerPaciente());
+                }
             }
             else
             {
@@ -112,9 +159,13 @@ namespace ExamenFinal
         #region CONFIGURACION DE BOTONES
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            gbDatos.Enabled=true;
+            gbDatos.Enabled = true;
             CargarHC();
             Limpiar();
+            accion = Accion.NUEVO;
+            btnGrabar.Enabled = true;
+            txtNombre.Focus();
+            lstPacientes.SelectedIndex = -1;
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
@@ -133,7 +184,11 @@ namespace ExamenFinal
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            var result = MessageBox.Show("Seguro que desea salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Dispose();
+            }
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -148,10 +203,11 @@ namespace ExamenFinal
 
         private void dtpFechaNac_ValueChanged(object sender, EventArgs e)
         {
-            if(dtpFechaNac.Value > DateTime.Today)
+            int anios = DateTime.Now.Year - dtpFechaNac.Value.Year;
+            if(anios < 18)
             {
                 MessageBox.Show("Fecha Invalida", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                dtpFechaNac.Value = DateTime.Today;
+                dtpFechaNac.Value = dtpFechaNac.MinDate;
                 return;
             }
         }
@@ -161,12 +217,68 @@ namespace ExamenFinal
             if (ckbObraSocial.Checked)
             {
                 cbObraSocial.Enabled = true;
+                cbObraSocial.Text = null;
             }
             else
             {
                 cbObraSocial.Enabled = false;
-                cbObraSocial.SelectedIndex = -1;
+                cbObraSocial.Text = "Particular";
             }
+        }
+
+        private void lstPacientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstPacientes.SelectedIndex != -1)
+            {
+                gbDatos.Enabled = false;
+                btnGrabar.Enabled = false;
+
+                Paciente p = (Paciente)lstPacientes.SelectedItem;
+
+                txtHistoriaClinica.Text = p.pNumeroHC.ToString();
+
+                txtNombre.Text = p.pNombre;
+
+                if (p.pObraSocial == 0)
+                {
+                    ckbObraSocial.Checked = false;
+                    cbObraSocial.Text = "Particular";
+                }
+                else
+                {
+                    ckbObraSocial.Checked = true;
+                    cbObraSocial.SelectedValue = p.pObraSocial;
+                }
+
+                if (p.pSexo == 1)
+                {
+                    rbFemenino.Checked = true;
+                }
+                else
+                {
+                    rbMasculino.Checked = true;
+                }
+
+                dtpFechaNac.Value = p.pFechaNac;
+
+                btnEditar.Enabled = true;
+            }
+            else
+            {
+                btnEditar.Enabled = false;
+            }
+        }
+
+        private void cbObraSocial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            gbDatos.Enabled = true;
+            btnGrabar.Enabled = true;
+            accion = Accion.EDITAR;
         }
 
         #endregion

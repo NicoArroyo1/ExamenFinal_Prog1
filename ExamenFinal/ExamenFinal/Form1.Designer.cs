@@ -42,10 +42,11 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtHistoriaClinica = new System.Windows.Forms.TextBox();
             this.gbListado = new System.Windows.Forms.GroupBox();
-            this.lbPacientes = new System.Windows.Forms.ListBox();
+            this.lstPacientes = new System.Windows.Forms.ListBox();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.gbDatos.SuspendLayout();
             this.gbListado.SuspendLayout();
             this.SuspendLayout();
@@ -114,12 +115,12 @@
             // 
             // cbObraSocial
             // 
-            this.cbObraSocial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbObraSocial.FormattingEnabled = true;
             this.cbObraSocial.Location = new System.Drawing.Point(159, 135);
             this.cbObraSocial.Name = "cbObraSocial";
             this.cbObraSocial.Size = new System.Drawing.Size(223, 23);
             this.cbObraSocial.TabIndex = 6;
+            this.cbObraSocial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbObraSocial_KeyPress);
             // 
             // lblFechaNac
             // 
@@ -176,14 +177,14 @@
             // 
             // txtHistoriaClinica
             // 
-            this.txtHistoriaClinica.Location = new System.Drawing.Point(120, 48);
+            this.txtHistoriaClinica.Location = new System.Drawing.Point(120, 53);
             this.txtHistoriaClinica.Name = "txtHistoriaClinica";
             this.txtHistoriaClinica.Size = new System.Drawing.Size(80, 23);
             this.txtHistoriaClinica.TabIndex = 1;
             // 
             // gbListado
             // 
-            this.gbListado.Controls.Add(this.lbPacientes);
+            this.gbListado.Controls.Add(this.lstPacientes);
             this.gbListado.Location = new System.Drawing.Point(416, 8);
             this.gbListado.Name = "gbListado";
             this.gbListado.Size = new System.Drawing.Size(400, 288);
@@ -191,14 +192,15 @@
             this.gbListado.TabStop = false;
             this.gbListado.Text = "Listado de Pacientes";
             // 
-            // lbPacientes
+            // lstPacientes
             // 
-            this.lbPacientes.FormattingEnabled = true;
-            this.lbPacientes.ItemHeight = 15;
-            this.lbPacientes.Location = new System.Drawing.Point(6, 22);
-            this.lbPacientes.Name = "lbPacientes";
-            this.lbPacientes.Size = new System.Drawing.Size(384, 259);
-            this.lbPacientes.TabIndex = 0;
+            this.lstPacientes.FormattingEnabled = true;
+            this.lstPacientes.ItemHeight = 15;
+            this.lstPacientes.Location = new System.Drawing.Point(6, 22);
+            this.lstPacientes.Name = "lstPacientes";
+            this.lstPacientes.Size = new System.Drawing.Size(384, 259);
+            this.lstPacientes.TabIndex = 0;
+            this.lstPacientes.SelectedIndexChanged += new System.EventHandler(this.lstPacientes_SelectedIndexChanged);
             // 
             // btnNuevo
             // 
@@ -212,11 +214,11 @@
             // 
             // btnGrabar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(188, 322);
+            this.btnGrabar.Location = new System.Drawing.Point(416, 322);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(170, 59);
-            this.btnGrabar.TabIndex = 3;
-            this.btnGrabar.Text = "Grabar Paciente";
+            this.btnGrabar.TabIndex = 4;
+            this.btnGrabar.Text = "Guardar cambios";
             this.btnGrabar.UseVisualStyleBackColor = true;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
@@ -225,16 +227,27 @@
             this.btnSalir.Location = new System.Drawing.Point(648, 322);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(170, 59);
-            this.btnSalir.TabIndex = 4;
+            this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(188, 322);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(170, 59);
+            this.btnEditar.TabIndex = 3;
+            this.btnEditar.Text = "Editar Paciente";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 390);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.btnNuevo);
@@ -267,9 +280,10 @@
         private TextBox txtNombre;
         private TextBox txtHistoriaClinica;
         private GroupBox gbListado;
-        private ListBox lbPacientes;
+        private ListBox lstPacientes;
         private Button btnNuevo;
         private Button btnGrabar;
         private Button btnSalir;
+        private Button btnEditar;
     }
 }
