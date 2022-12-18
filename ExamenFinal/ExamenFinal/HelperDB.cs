@@ -23,11 +23,10 @@ namespace ExamenFinal
         {
             int paciente;
 
-            string query = "select MAX(numeroHC)+1 from Pacientes";
-            //string query2 = "select ident_current('Pacientes')";
+            string query2 = "select ident_current('Pacientes')";
             
             cnn.Open();
-            SqlCommand cmd = new(query, cnn);
+            SqlCommand cmd = new(query2, cnn);
             paciente = int.Parse(cmd.ExecuteScalar().ToString());
             cnn.Close();
 
@@ -80,6 +79,20 @@ namespace ExamenFinal
 
             string query = $"insert into Pacientes(nombre,obraSocial,sexo,fechaNacimiento) " +
                            $"values('{nom}',{oSoc},{sexo},'{fec}')";
+
+            cnn.Open();
+            SqlCommand cmd = new(query, cnn);
+            filas = cmd.ExecuteNonQuery();
+            cnn.Close();
+
+            return filas;
+        }
+
+        internal int EjecutarDelete(Paciente p)
+        {
+            int filas;
+
+            string query = $"delete from Pacientes where numeroHC={p.pNumeroHC}";
 
             cnn.Open();
             SqlCommand cmd = new(query, cnn);

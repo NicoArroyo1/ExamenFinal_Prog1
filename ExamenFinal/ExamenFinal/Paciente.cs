@@ -8,15 +8,22 @@ namespace ExamenFinal
 {
     public class Paciente
     {
+        //----------------------------------------------------------------------------------
+
         #region ATRIBUTOS
+
         private int numeroHC;
 		private string nombre;
 		private int obraSocial;
 		private int sexo;
 		private DateTime fechaNac;
+
         #endregion
 
+        //----------------------------------------------------------------------------------
+
         #region PROPIEDADES
+
         public int pNumeroHC
 		{
 			get { return numeroHC; }
@@ -42,9 +49,13 @@ namespace ExamenFinal
             get { return fechaNac; }
             set { fechaNac = value; }
         }
+
         #endregion
 
+        //----------------------------------------------------------------------------------
+
         #region CONSTRUCTORES
+
         public Paciente()
         {
             pNumeroHC = 0;
@@ -61,13 +72,20 @@ namespace ExamenFinal
             pSexo = sexo;
             pFechaNac = fechanac;
         }
+
         #endregion
 
+        //----------------------------------------------------------------------------------
+
         #region METODOS
+
         public override string ToString()
         {
             return numeroHC + "  -  " + nombre + "  -  " + fechaNac.ToShortDateString();
         }
+
         #endregion
+
+        //----------------------------------------------------------------------------------
     }
 }

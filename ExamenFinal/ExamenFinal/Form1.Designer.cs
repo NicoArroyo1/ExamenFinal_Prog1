@@ -47,6 +47,7 @@
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.btnBorrar = new System.Windows.Forms.Button();
             this.gbDatos.SuspendLayout();
             this.gbListado.SuspendLayout();
             this.SuspendLayout();
@@ -204,9 +205,9 @@
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(12, 322);
+            this.btnNuevo.Location = new System.Drawing.Point(8, 321);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(170, 59);
+            this.btnNuevo.Size = new System.Drawing.Size(82, 57);
             this.btnNuevo.TabIndex = 2;
             this.btnNuevo.Text = "Nuevo Paciente";
             this.btnNuevo.UseVisualStyleBackColor = true;
@@ -214,9 +215,9 @@
             // 
             // btnGrabar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(416, 322);
+            this.btnGrabar.Location = new System.Drawing.Point(416, 321);
             this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(170, 59);
+            this.btnGrabar.Size = new System.Drawing.Size(82, 57);
             this.btnGrabar.TabIndex = 4;
             this.btnGrabar.Text = "Guardar cambios";
             this.btnGrabar.UseVisualStyleBackColor = true;
@@ -224,9 +225,9 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(648, 322);
+            this.btnSalir.Location = new System.Drawing.Point(734, 321);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(170, 59);
+            this.btnSalir.Size = new System.Drawing.Size(82, 57);
             this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -234,19 +235,30 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(188, 322);
+            this.btnEditar.Location = new System.Drawing.Point(96, 321);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(170, 59);
+            this.btnEditar.Size = new System.Drawing.Size(82, 57);
             this.btnEditar.TabIndex = 3;
             this.btnEditar.Text = "Editar Paciente";
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Location = new System.Drawing.Point(184, 321);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(82, 57);
+            this.btnBorrar.TabIndex = 6;
+            this.btnBorrar.Text = "Borrar Paciente";
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 390);
+            this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGrabar);
@@ -285,5 +297,6 @@
         private Button btnGrabar;
         private Button btnSalir;
         private Button btnEditar;
+        private Button btnBorrar;
     }
 }

@@ -16,13 +16,11 @@ namespace ExamenFinal
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           gbDatos.Enabled = false;
            ActualizarLista();
            Limpiar();
            CargarCombo();
            txtHistoriaClinica.ReadOnly = true;
-           btnEditar.Enabled = false;
-           btnGrabar.Enabled = false;
+           gbDatos.Enabled = false;
         }
         
         //----------------------------------------------------------------------------------
@@ -81,6 +79,9 @@ namespace ExamenFinal
             rbFemenino.Checked = false;
             rbMasculino.Checked = false;
             dtpFechaNac.Value = dtpFechaNac.MinDate;
+            btnEditar.Enabled = false;
+            btnGrabar.Enabled = false;
+            btnBorrar.Enabled = false;
         }
 
         public Paciente ObtenerPaciente()
@@ -148,6 +149,16 @@ namespace ExamenFinal
             {
                 MessageBox.Show("Datos Vacios y/o Invalidos", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+
+            return res;
+        }
+
+        public int BorrarPaciente()
+        {
+            int res;
+
+            oHelper = new HelperDB();
+            res = oHelper.EjecutarDelete(ObtenerPaciente());
 
             return res;
         }
@@ -231,6 +242,8 @@ namespace ExamenFinal
             if (lstPacientes.SelectedIndex != -1)
             {
                 gbDatos.Enabled = false;
+                btnEditar.Enabled = true;
+                btnBorrar.Enabled = true;
                 btnGrabar.Enabled = false;
 
                 Paciente p = (Paciente)lstPacientes.SelectedItem;
@@ -260,8 +273,6 @@ namespace ExamenFinal
                 }
 
                 dtpFechaNac.Value = p.pFechaNac;
-
-                btnEditar.Enabled = true;
             }
             else
             {
@@ -279,6 +290,17 @@ namespace ExamenFinal
             gbDatos.Enabled = true;
             btnGrabar.Enabled = true;
             accion = Accion.EDITAR;
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+
+            if(BorrarPaciente() == 1)
+            {
+                MessageBox.Show("Paciente borrado con exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Limpiar();
+                ActualizarLista();
+            }
         }
 
         #endregion
